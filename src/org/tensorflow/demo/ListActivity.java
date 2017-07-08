@@ -21,7 +21,7 @@ import java.util.List;
 import org.snpeflow.demo.R;
 
 public class ListActivity extends AppCompatActivity {
-    ArrayList<RecipeBase.Recipe> recipeList;
+    ArrayList<RecipeBase.Recipe> recipeList = null;
 
     public void setRecipeList(ArrayList<RecipeBase.Recipe> recipeList) {
         this.recipeList = recipeList;
@@ -32,36 +32,34 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         final ListView listview = (ListView) findViewById(R.id.list_view);
-        String[] values = new String[]{"Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile"};
+
+        if (recipeList == null) {
+            RecipeBase tmp = new RecipeBase();
+            recipeList = tmp.recipeList;
+        }
 
         final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
+        for (int i = 0, len = recipeList.size(); i < len; ++i) {
+            list.add(recipeList.get(i).recipeName);
         }
+
         final StableArrayAdapter adapter = new StableArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
-                String url = "http://www.example.com";
+                String url = recipeList.get((int) id).recipeUrl;
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
             }
-
         });
     }
 }
 
 class StableArrayAdapter extends ArrayAdapter<String> {
-
     HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
 
     public StableArrayAdapter(Context context, int textViewResourceId,
@@ -72,15 +70,12 @@ class StableArrayAdapter extends ArrayAdapter<String> {
         }
     }
 
-    @Override
     public long getItemId(int position) {
         String item = getItem(position);
         return mIdMap.get(item);
     }
 
-    @Override
     public boolean hasStableIds() {
         return true;
     }
-
 }

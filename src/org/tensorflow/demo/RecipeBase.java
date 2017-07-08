@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class RecipeBase {
     private ArrayList<String> myIngredients;
-    private ArrayList<Recipe> recipeList;
+    ArrayList<Recipe> recipeList;
     private String[] lines = {
             "Strawberry Banana Smoothie,https://www.readyseteat.com/recipes-Strawberry-Banana-Smoothie-3519,ice cream,strawberry,banana",
             "Lemonade,http://allrecipes.com/recipe/32385/best-lemonade-ever/,lemon,water bottle,sugar",

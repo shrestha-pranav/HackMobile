@@ -13,7 +13,7 @@ public class RecipeBase {
         this.loadRecipes();
     }
 
-    public addIngredient(String ingredient) {
+    public void addIngredient(String ingredient) {
         availableIngredients.add(ingredient);
     }
 

@@ -41,10 +41,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_medium"
         android:background="@android:drawable/ic_menu_camera"
-        android:scaleX="4"
-        android:scaleY="4"
-        android:text="Button"
-        android:translationY="220dp" />
+        android:scaleX="2"
+        android:scaleY="2"
+        android:scaleType="centerCrop" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/smbc_next"
+        android:text = "Done"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_medium" />
 </RelativeLayout>

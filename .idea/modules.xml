@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/snpe-flow-master.iml" filepath="$PROJECT_DIR$/snpe-flow-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HackMobile.iml" filepath="$PROJECT_DIR$/HackMobile.iml" />
     </modules>
   </component>
 </project>

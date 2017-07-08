@@ -1,70 +1,79 @@
 package org.tensorflow.demo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class RecipeBase {
-    private ArrayList<String> availableIngredients;
+    private ArrayList<String> myIngredients;
     private ArrayList<Recipe> recipeList;
-    private ArrayList<String> lines;
+    private String[] lines = {
+            "Strawberry Banana Smoothie,https://www.readyseteat.com/recipes-Strawberry-Banana-Smoothie-3519,ice cream,strawberry,banana",
+            "Lemonade,http://allrecipes.com/recipe/32385/best-lemonade-ever/,lemon,water bottle,sugar",
+            "Orange Sherbet,http://www.foodnetwork.com/recipes/alton-brown/orange-sherbet-recipe-1945337,orange,lemon,ice cream,milk",
+            "Pinapple Rice,https://www.littlebroken.com/2015/06/29/pineapple-rice/,pineapple,lemon,rice,water bottle",
+            "Indian Street Corn,http://www.foodnetwork.com/recipes/aarti-sequeira/indian-street-corn-salad-recipe-2121054,corn,lemon,spices"};
 
     public RecipeBase(ArrayList<String> ingredients) {
-        this.availableIngredients = ingredients;
+        this.myIngredients = ingredients;
+        recipeList = new ArrayList<Recipe>();
         this.loadRecipes();
     }
 
+    public RecipeBase() {
+        this(new ArrayList<String>());
+    }
+
     public void addIngredient(String ingredient) {
-        availableIngredients.add(ingredient);
+        myIngredients.add(ingredient);
     }
 
     private void loadRecipes() {
-        try {
-            for (String line : lines) {
-                recipeList.add(new Recipe(line));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (String line : lines) {
+            System.out.println(line);
+            recipeList.add(new Recipe(line));
         }
     }
 
     public ArrayList<Recipe> getRecipes() {
-        return getRecipes(this.availableIngredients);
+        return getRecipes(this.myIngredients);
     }
 
     private ArrayList<Recipe> getRecipes(ArrayList<String> ingredients) {
         ArrayList<Recipe> results = new ArrayList<>();
         for (Recipe recipe : recipeList) {
-            Recipe tmp = recipe.compare(ingredients);
-            if (tmp.availableIngredients.size() > tmp.unavailableIngredients.size())
-                results.add(tmp);
+            Recipe t = recipe.compare(ingredients);
+            if (t.availableIngredients.size() > t.unavailableIngredients.size())
+                results.add(t);
         }
         return results;
     }
 
     public class Recipe {
-        String recipe_name;
+        String recipeName;
         ArrayList<String> availableIngredients = new ArrayList<String>();
         ArrayList<String> unavailableIngredients = new ArrayList<String>();
         String recipeUrl;
 
         public Recipe(String line) {
             String[] list = line.split(",");
-            recipe_name = list[0];
+            recipeName = list[0];
             recipeUrl = list[1];
-            for (int i = 2; i < line.length(); i++)
+            for (int i = 2; i < list.length; i++) {
                 availableIngredients.add(list[i]);
+            }
         }
 
-        public Recipe() {
+        public Recipe(String name, String url) {
+            recipeName = name;
+            recipeUrl = url;
         }
 
         public Recipe compare(ArrayList<String> ingredients) {
-            Recipe result = new Recipe();
-            result.recipe_name = recipe_name;
-            result.recipeUrl = recipeUrl;
+            Recipe result = new Recipe(recipeName, recipeUrl);
             for (String a : availableIngredients) {
-                if (ingredients.contains(a)) result.availableIngredients.add(a);
-                else result.unavailableIngredients.add(a);
+                if (ingredients.contains(a))
+                    result.availableIngredients.add(a);
+                else
+                    result.unavailableIngredients.add(a);
             }
             return result;
         }

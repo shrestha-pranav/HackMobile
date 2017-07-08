@@ -290,7 +290,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
         Trace.endSection();
     }
 
-    private String[] food = {"strawberry", "apple", "orange", "lemon", "fig", "pineapple", "banana", "jackfruit", "custard apple", "pomegranate", "rapeseed", "corn", "hammer", "Dungeness crab", "rock crab", "fiddler crab", "king crab", "American lobster", "mashed potato", "bell pepper", "head cabbage", "broccoli", "cauliflower", "zucchini", "spaghetti squash", "acorn squash", "butternut squash", "cucumber", "artichoke", "cardoon", "mushroom", "carton", "cocktail shaker", "bagel", "hot pot", "whiskey jug", "beer bottle", "red wine", "drumstick", "meat loaf", "beer glass", "guacamole", "eggnog", "potpie", "wine bottle", "dough", "French loaf", "milk can", "hotdog", "burrito", "pickelhaube", "goblet", "ice cream", "pretzel", "cheeseburger"};
+    private String[] food = {"strawberry", "apple", "orange", "lemon", "fig", "pineapple", "banana", "jackfruit", "custard apple", "pomegranate", "rapeseed", "corn", "hammer", "Dungeness crab", "rock crab", "fiddler crab", "king crab", "American lobster", "mashed potato", "bell pepper", "head cabbage", "broccoli", "cauliflower", "zucchini", "spaghetti squash", "acorn squash", "butternut squash", "cucumber", "artichoke", "cardoon", "mushroom", "cocktail shaker", "bagel", "hot pot", "whiskey jug", "beer bottle", "red wine", "drumstick", "meat loaf", "beer glass", "guacamole", "eggnog", "potpie", "wine bottle", "dough", "French loaf", "milk can", "hotdog", "burrito", "pickelhaube", "goblet", "ice cream", "pretzel", "cheeseburger"};
 
     private boolean checkResult(String title) {
         return Arrays.asList(food).contains(title);

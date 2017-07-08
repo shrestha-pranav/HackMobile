@@ -1,7 +1,6 @@
-
 // import DownloadModels task
 project.ext.ASSET_DIR = projectDir.toString() + '/assets'
-project.ext.TMP_DIR   = project.buildDir.toString() + '/downloads'
+project.ext.TMP_DIR = project.buildDir.toString() + '/downloads'
 
 buildscript {
     repositories {
@@ -85,5 +84,7 @@ model {
 // apply from: "download-models.gradle"
 
 dependencies {
-    compile(name: 'snpe-release', ext:'aar')
+    compile(name: 'snpe-release', ext: 'aar')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

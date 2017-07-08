@@ -51,7 +51,7 @@
     <Button
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:id="@+id/smbc_next"
+        android:id="@+id/done_btn"
         android:text = "Done"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/margin_medium"

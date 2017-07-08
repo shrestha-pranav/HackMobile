@@ -34,6 +34,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat">
+
         <activity
             android:name="org.tensorflow.demo.ClassifierActivity"
             android:label="@string/activity_name_classification"
@@ -47,9 +48,9 @@
         </activity>
         <activity
             android:name="org.tensorflow.demo.ListActivity"
+            android:label="Recipe List"
             android:launchMode="singleTop"
-            android:parentActivityName="org.tensorflow.demo.ClassifierActivity"
-            android:label="Recipe List">
+            android:parentActivityName="org.tensorflow.demo.ClassifierActivity">
 
         </activity>
 

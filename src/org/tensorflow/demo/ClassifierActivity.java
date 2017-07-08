@@ -16,6 +16,8 @@
 
 package org.tensorflow.demo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -32,8 +34,11 @@ import android.os.Trace;
 import android.util.Size;
 import android.util.TypedValue;
 import android.view.Display;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.qualcomm.qti.snpe.NeuralNetwork;
 import com.qualcomm.qti.snpe.SNPE;
@@ -361,5 +366,6 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
     public void buttonPress() {
         isButtonPressed = true;
     }
+
 
 }

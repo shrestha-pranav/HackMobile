@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,16 @@ import org.snpeflow.demo.R;
 
 public class ListActivity extends AppCompatActivity {
     ArrayList<RecipeBase.Recipe> recipeList = null;
+    private static ArrayList<String> ingredients = new ArrayList<String>();
+    public static void setIngredients(ArrayList<String> ingredients)
+    {
+        synchronized (ListActivity.ingredients)
+        {
+            ListActivity.ingredients = ingredients;
+        }
+    }
+
+
 
     public void setRecipeList(ArrayList<RecipeBase.Recipe> recipeList) {
         this.recipeList = recipeList;

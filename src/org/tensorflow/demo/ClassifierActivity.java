@@ -27,6 +27,7 @@ import android.view.View;
 import com.qualcomm.qti.snpe.NeuralNetwork;
 import com.qualcomm.qti.snpe.SNPE;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -101,7 +102,12 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 
     private long lastProcessingTimeMs;
     private volatile boolean isButtonPressed = false;
-    private ArrayList<String> ingredientList = new ArrayList<>();
+    private static volatile ArrayList<String> ingredientList = new ArrayList<>();
+    public static ArrayList<String> getIngredients()
+    {
+        return ingredientList;
+    }
+
 
     @Override
     protected int getLayoutId() {

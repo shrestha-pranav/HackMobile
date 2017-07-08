@@ -714,6 +714,7 @@ public class CameraConnectionFragment extends Fragment {
         }
 
         public void onSwipeLeft() {
+            ListActivity.setIngredients(ClassifierActivity.getIngredients());
             Intent intent = new Intent(getActivity(), ListActivity.class);
             startActivity(intent);
         }

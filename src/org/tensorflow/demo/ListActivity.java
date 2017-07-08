@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,7 +23,7 @@ import org.snpeflow.demo.R;
 
 public class ListActivity extends AppCompatActivity {
     ArrayList<RecipeBase.Recipe> recipeList = null;
-    private static ArrayList<String> ingredients = new ArrayList<String>();
+    private static volatile ArrayList<String> ingredients = new ArrayList<String>();
     public static void setIngredients(ArrayList<String> ingredients)
     {
         synchronized (ListActivity.ingredients)
@@ -30,22 +31,23 @@ public class ListActivity extends AppCompatActivity {
             ListActivity.ingredients = ingredients;
         }
     }
-
-
-
-    public void setRecipeList(ArrayList<RecipeBase.Recipe> recipeList) {
-        this.recipeList = recipeList;
-    }
-
+    public static final String TAG = "ListActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         final ListView listview = (ListView) findViewById(R.id.list_view);
 
-        if (recipeList == null) {
+        if (ingredients == null || ingredients.size() == 0) {
+            Log.d(TAG, "No ingredients found!!!!!!!!!!!!!!!!!!!");
             RecipeBase tmp = new RecipeBase();
             recipeList = tmp.recipeList;
+        } else {
+            RecipeBase tmp = new RecipeBase(ingredients);
+            for(int i = 0; i < ingredients.size(); i++){
+                Log.d(TAG, ingredients.get(i));
+            }
+            recipeList = tmp.getRecipes();
         }
 
         final ArrayList<String> list = new ArrayList<String>();

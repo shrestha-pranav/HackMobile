@@ -15,6 +15,7 @@ import android.media.ImageReader;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
 import android.os.Trace;
+import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
 import android.view.Display;
@@ -280,7 +281,16 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 
                         cropCopyBitmap = Bitmap.createBitmap(croppedBitmap);
                         if (results.result.size() > 0 && checkResult(results.result.get(0).getTitle())) {
-                            ingredientList.add(results.result.get(0).getTitle());
+
+                            synchronized(ingredientList) {
+                                ingredientList.add(results.result.get(0).getTitle());
+                            }
+                            if(ingredientList.size() == 0)
+                            {
+                                Log.d("FUCKU PRANVU", "run: size is 0");
+                            }
+
+
                             resultsView.setResults(results.result);
                         }
                         requestRender();

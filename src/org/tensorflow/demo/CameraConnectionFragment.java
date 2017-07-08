@@ -330,6 +330,7 @@ public class CameraConnectionFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ListActivity.setIngredients(ClassifierActivity.getIngredients());
                 Intent intent = new Intent(getActivity(), ListActivity.class);
                 getActivity().startActivity(intent);
             }
@@ -712,8 +713,10 @@ public class CameraConnectionFragment extends Fragment {
                 return result;
             }
         }
-
+        public String TAG = this.getClass().getSimpleName();
         public void onSwipeLeft() {
+
+            Log.d(TAG, "onSwipeLeft: Ingredients size is" + ClassifierActivity.getIngredients().size());
             ListActivity.setIngredients(ClassifierActivity.getIngredients());
             Intent intent = new Intent(getActivity(), ListActivity.class);
             startActivity(intent);

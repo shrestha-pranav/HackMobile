@@ -55,7 +55,6 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     setContentView(R.layout.activity_camera);
-
     if (hasPermission()) {
       setFragment();
     } else {

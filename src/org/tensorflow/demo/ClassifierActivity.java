@@ -110,6 +110,8 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
   private BorderedText borderedText;
 
   private long lastProcessingTimeMs;
+    private volatile boolean isButtonPressed = false;
+    private ArrayList<String> recipeList = new ArrayList<>();
 
   @Override
   protected int getLayoutId() {
@@ -226,6 +228,12 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
         image.close();
         return;
       }
+      if(!isButtonPressed)
+      {
+          image.close();
+          return;
+      }
+      isButtonPressed = false;
       computing = true;
 
       Trace.beginSection("imageAvailable");
@@ -266,8 +274,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
     if (SAVE_PREVIEW_BITMAP) {
       ImageUtils.saveBitmap(croppedBitmap);
     }
-
-    runInBackground(
+      runInBackground(
         new Runnable() {
           @Override
           public void run() {
@@ -277,12 +284,12 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
             lastProcessingTimeMs = results.time;
 
             cropCopyBitmap = Bitmap.createBitmap(croppedBitmap);
+              recipeList.add(results.result.get(0).getTitle());//TODO recipeList
             resultsView.setResults(results.result);
             requestRender();
             computing = false;
           }
         });
-
     Trace.endSection();
   }
 
@@ -341,4 +348,10 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
       borderedText.drawLines(canvas, 10, canvas.getHeight() - 10, lines);
     }
   }
+
+  public void buttonPress()
+  {
+      isButtonPressed = true;
+  }
+
 }

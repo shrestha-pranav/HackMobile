@@ -43,6 +43,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -50,6 +51,8 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -225,7 +228,6 @@ public class CameraConnectionFragment extends Fragment {
    */
   private final int layout;
 
-
   private final ConnectionCallback cameraConnectionCallback;
 
   private CameraConnectionFragment(
@@ -324,6 +326,15 @@ public class CameraConnectionFragment extends Fragment {
   @Override
   public void onViewCreated(final View view, final Bundle savedInstanceState) {
     textureView = (AutoFitTextureView) view.findViewById(R.id.texture);
+
+    ImageButton takeStillPhoto = (ImageButton) view.findViewById(R.id.button_still_capture); //TODO BUTTON ID
+    takeStillPhoto.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View v) {
+        ClassifierActivity activity = (ClassifierActivity) getActivity();
+        activity.buttonPress();
+      }
+    });
   }
 
   @Override
@@ -502,7 +513,8 @@ public class CameraConnectionFragment extends Fragment {
         public void onCaptureCompleted(
             final CameraCaptureSession session,
             final CaptureRequest request,
-            final TotalCaptureResult result) {}
+            final TotalCaptureResult result) {
+        }
       };
 
   /**

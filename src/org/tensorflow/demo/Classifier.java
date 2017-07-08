@@ -26,7 +26,7 @@ public interface Classifier {
   /**
    * An immutable result returned by a Classifier describing what was recognized.
    */
-  public class Recognition {
+  class Recognition {
     /**
      * A unique identifier for what has been recognized. Specific to the class, not the instance of
      * the object.
@@ -97,7 +97,7 @@ public interface Classifier {
     }
   }
 
-  public static class InferenceResult {
+  class InferenceResult {
     List<Recognition> result;
     long time;
   }

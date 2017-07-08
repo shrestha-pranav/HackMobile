@@ -705,13 +705,6 @@ public class CameraConnectionFragment extends Fragment {
                             }
                             result = true;
                         }
-                    } else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
-                        if (diffY > 0) {
-                            onSwipeBottom();
-                        } else {
-                            onSwipeTop();
-                        }
-                        result = true;
                     }
                 } catch (Exception exception) {
                     exception.printStackTrace();

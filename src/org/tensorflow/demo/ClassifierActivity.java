@@ -273,7 +273,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
                         lastProcessingTimeMs = results.time;
 
                         cropCopyBitmap = Bitmap.createBitmap(croppedBitmap);
-                        if (checkResult(results.result.get(0).getTitle())) {
+                        if (results.result.size() > 0 && checkResult(results.result.get(0).getTitle())) {
                             ingredientList.add(results.result.get(0).getTitle());
                             resultsView.setResults(results.result);
                         }
@@ -284,11 +284,10 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
         Trace.endSection();
     }
 
-    private String[] food = {"banana", "ice cream", "pineapple", "corn"};
+    private String[] food = {"strawberry", "apple", "orange", "lemon", "fig", "pineapple", "banana", "jackfruit", "custard apple", "pomegranate", "rapeseed", "corn", "hammer", "Dungeness crab", "rock crab", "fiddler crab", "king crab", "American lobster", "mashed potato", "bell pepper", "head cabbage", "broccoli", "cauliflower", "zucchini", "spaghetti squash", "acorn squash", "butternut squash", "cucumber", "artichoke", "cardoon", "mushroom", "carton", "cocktail shaker", "bagel", "hot pot", "whiskey jug", "beer bottle", "red wine", "drumstick", "meat loaf", "beer glass", "guacamole", "eggnog", "potpie", "wine bottle", "dough", "French loaf", "milk can", "hotdog", "burrito", "pickelhaube", "goblet", "ice cream", "pretzel", "cheeseburger"};
 
     private boolean checkResult(String title) {
-        return true;
-        //return Arrays.asList(food).contains(title);
+        return Arrays.asList(food).contains(title);
     }
 
     @Override

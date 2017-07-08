@@ -316,7 +316,7 @@ pool table
 dining table
 entertainment center
 wardrobe
-Granny Smith
+apple
 orange
 lemon
 fig

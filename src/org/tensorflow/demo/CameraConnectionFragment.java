@@ -725,6 +725,10 @@ public class CameraConnectionFragment extends Fragment {
         public void onSwipeRight() {
             //Intent intent = new Intent(this, ListActivity.class);
             //startActivity(intent);
+            //Log.d(TAG, "onSwipeLeft: Ingredients size is" + ClassifierActivity.getIngredients().size());
+            //ListActivity.setIngredients(ClassifierActivity.getIngredients());
+//            Intent intent = new Intent(getActivity(), CameraActivity.class);
+//            startActivity(intent);
         }
     }
 }

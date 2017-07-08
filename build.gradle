@@ -1,0 +1,89 @@
+
+// import DownloadModels task
+project.ext.ASSET_DIR = projectDir.toString() + '/assets'
+project.ext.TMP_DIR   = project.buildDir.toString() + '/downloads'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle-experimental:0.9.3'
+    }
+}
+
+repositories {
+    flatDir {
+        // Marks the directory as a repository for
+        // dependencies. Please the snpe-release.aar
+        // in the directory below.
+        dirs 'libs'
+    }
+}
+
+apply plugin: 'com.android.model.application'
+
+model {
+    android {
+        compileSdkVersion 23
+        buildToolsVersion "25.0.2"
+
+        ndk {
+            moduleName "imageutil"
+            abiFilters.add("armeabi-v7a")
+        }
+
+        sources {
+            main {
+                java {
+                    source {
+                        srcDir "src"
+                    }
+                }
+
+                manifest {
+                    source {
+                        srcDir '.'
+                        include 'AndroidManifest.xml'
+                    }
+                }
+
+                resources {
+                    source {
+                        srcDirs = ['src']
+                    }
+                }
+
+                aidl {
+                    source {
+                        srcDirs = ['src']
+                    }
+                }
+                res {
+                    source {
+                        srcDirs = ['res']
+                    }
+                }
+                assets {
+                    source {
+                        srcDirs = ['assets']
+                    }
+                }
+                jni {
+                    source {
+                        srcDirs = ['jni']
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Download default models; if you wish to use your own models then
+// place them in the "assets" directory and comment out this line.
+// apply from: "download-models.gradle"
+
+dependencies {
+    compile(name: 'snpe-release', ext:'aar')
+}

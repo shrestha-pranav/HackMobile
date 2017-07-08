@@ -6,9 +6,9 @@ public class RecipeBase {
     private ArrayList<String> myIngredients;
     ArrayList<Recipe> recipeList;
     private String[] lines = {
-            "Strawberry Banana Smoothie,https://www.readyseteat.com/recipes-Strawberry-Banana-Smoothie-3519,ice cream,strawberry,banana",
+            "Strawberry Banana Smoothie,https://www.readyseteat.com/recipes-Strawberry-Banana-Smoothie-3519,ice cream,strawberry,banana, milk can",
             "Lemonade,http://allrecipes.com/recipe/32385/best-lemonade-ever/,lemon,water bottle,sugar",
-            "Orange Sherbet,http://www.foodnetwork.com/recipes/alton-brown/orange-sherbet-recipe-1945337,orange,lemon,ice cream,milk",
+            "Orange Sherbet,http://www.foodnetwork.com/recipes/alton-brown/orange-sherbet-recipe-1945337,orange,lemon,ice cream,milk can",
             "Pinapple Rice,https://www.littlebroken.com/2015/06/29/pineapple-rice/,pineapple,lemon,rice,water bottle",
             "Indian Street Corn,http://www.foodnetwork.com/recipes/aarti-sequeira/indian-street-corn-salad-recipe-2121054,corn,lemon,spices"};
 
